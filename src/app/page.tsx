@@ -2,30 +2,75 @@ import Image from "next/image"
 import Link from "next/link"
 import { Menu, ChevronRight, Check, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
+import { FiAlignJustify } from "react-icons/fi";
 
 export default function LandingPage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navbar */}
-      <header className="sticky flex items-center flex-col top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky flex items-center flex-col top-0 z-40 w-full pr-5 pl-5 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image src="/logo-visual.png" alt="Logo" width={32} height={32} className="rounded-md" />
+            <Image src="/logo-visualisto.png" alt="Logo" width={40} height={40} className="rounded-md" />
             <span className="text-xl font-bold">Visualisto</span>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex md:hidden">
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Abrir menú</span>
-            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Image src="/burger.svg" alt="burger" width={30} height={30} className="rounded-md" />
+                  <span className="sr-only">Abrir menú</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] p-5 sm:w-[350px]">
+                <div className="flex items-center gap-2 mb-6">
+                  <Image src="/logo-visualisto.png" alt="Logo" width={40} height={40} className="rounded-md" />
+                  <span className="text-xl font-bold">Visualisto</span>
+                </div>
+                <SheetTitle>Menú</SheetTitle>
+                <nav className="flex flex-col gap-4">
+                  <SheetClose asChild>
+                    <Link href="#servicio" className="flex items-center py-2 text-base font-medium hover:text-primary">
+                      Servicio
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link href="#precios" className="flex items-center py-2 text-base font-medium hover:text-primary">
+                      Precios
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link href="#nosotros" className="flex items-center py-2 text-base font-medium hover:text-primary">
+                      Nosotros
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link href="#demos" className="flex items-center py-2 text-base font-medium hover:text-primary">
+                      Demos
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link href="#contacto" className="flex items-center py-2 text-base font-medium hover:text-primary">
+                      Contacto
+                    </Link>
+                  </SheetClose>
+                  <div className="mt-4">
+                    <SheetClose asChild>
+                      <Button className="w-full">Solicitar Demo</Button>
+                    </SheetClose>
+                  </div>
+                </nav>
+              </SheetContent>
+            </Sheet>
           </div>
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#servicios" className="text-sm font-medium hover:text-primary">
-              Servicios
+            <Link href="#servicio" className="text-sm font-medium hover:text-primary">
+              Servicio
             </Link>
             <Link href="#precios" className="text-sm font-medium hover:text-primary">
               Precios
@@ -46,7 +91,7 @@ export default function LandingPage() {
 
       <main className="flex-1 flex flex-col w-full">
         {/* Hero Section */}
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-background to-muted flex justify-center">
+        <section className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-background to-muted flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
               <div className="flex flex-col justify-center space-y-4">
@@ -79,7 +124,7 @@ export default function LandingPage() {
         </section>
 
         {/* Features Section */}
-        <section id="servicios" className="w-full py-12 md:py-24 lg:py-32 bg-background flex justify-center">
+        <section id="servicio" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-background flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -140,7 +185,7 @@ export default function LandingPage() {
         </section>
 
         {/* Precios Section */}
-        <section id="precios" className="w-full py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
+        <section id="precios" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -155,7 +200,7 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto flex justify-center max-w-5xl gap-6 py-12 md:grid-cols-3">
+            <div className="mx-auto flex justify-center items-center flex-col sm:flex-row max-w-5xl gap-6 py-12 md:grid-cols-3">
               {[
                 {
                   name: "Básico",
@@ -187,7 +232,7 @@ export default function LandingPage() {
               ].map((plan, index) => (
                 <div
                   key={index}
-                  className={`flex flex-col w-33/100 rounded-lg border ${plan.popular ? "border-primary shadow-lg scale-105" : ""} bg-background p-6`}
+                  className={`flex flex-col w-90/100 lg:w-50/100 rounded-lg border ${plan.popular ? "border-primary shadow-lg scale-105" : ""} bg-background p-6`}
                 >
                   {plan.popular && (
                     <div className="inline-block rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground mb-4 w-fit">
@@ -218,7 +263,7 @@ export default function LandingPage() {
         </section>
 
         {/* About Section */}
-        <section id="nosotros" className="w-full py-12 md:py-24 lg:py-32 bg-background flex justify-center">
+        <section id="nosotros" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-background flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
               <Image
@@ -258,7 +303,7 @@ export default function LandingPage() {
         </section>
 
         {/* Demos Section */}
-        <section id="demos" className="w-full py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
+        <section id="demos" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -318,7 +363,7 @@ export default function LandingPage() {
         </section>
 
         {/* CTA Section */}
-        <section id="contacto" className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground flex justify-center">
+        <section id="contacto" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
