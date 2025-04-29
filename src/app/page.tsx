@@ -200,7 +200,7 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto flex justify-center items-center flex-col sm:flex-row max-w-5xl gap-6 py-12 md:grid-cols-3">
+            <div className="mx-auto flex justify-center items-center sm:items-stretch flex-col sm:flex-row max-w-5xl gap-6 py-12 md:grid-cols-3">
               {[
                 {
                   name: "Básico",
