@@ -462,7 +462,7 @@ export default function LandingPage() {
       <footer className="w-full flex justify-center flex-col border-t bg-background py-6 flex justify-center items-center">
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <Image src="/logo-visual.png" alt="Logo" width={32} height={32} className="rounded-md" />
+            <Image src="/logo-visualisto.png" alt="Logo" width={32} height={32} className="rounded-md" />
             <span className="text-lg font-bold">Visualisto</span>
           </div>
           <p className="text-center text-sm text-muted-foreground md:text-left">
