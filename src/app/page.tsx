@@ -10,7 +10,7 @@ export default function LandingPage() {
       <header className="sticky flex items-center flex-col top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} className="rounded-md" />
+            <Image src="/logo-visual.png" alt="Logo" width={32} height={32} className="rounded-md" />
             <span className="text-xl font-bold">Visualisto</span>
           </div>
 
@@ -27,11 +27,14 @@ export default function LandingPage() {
             <Link href="#servicios" className="text-sm font-medium hover:text-primary">
               Servicios
             </Link>
+            <Link href="#precios" className="text-sm font-medium hover:text-primary">
+              Precios
+            </Link>
             <Link href="#nosotros" className="text-sm font-medium hover:text-primary">
               Nosotros
             </Link>
-            <Link href="#testimonios" className="text-sm font-medium hover:text-primary">
-              Testimonios
+            <Link href="#demos" className="text-sm font-medium hover:text-primary">
+              Demos
             </Link>
             <Link href="#contacto" className="text-sm font-medium hover:text-primary">
               Contacto
@@ -49,11 +52,10 @@ export default function LandingPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    Soluciones innovadoras para tu negocio
+                  Revoluciona tu negocio con nuestras soluciones creativas
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Transformamos ideas en resultados. Nuestro equipo de expertos está listo para llevar tu empresa al
-                    siguiente nivel.
+                  Diseña catálogos impactantes y multiplica tus clientes
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -61,7 +63,7 @@ export default function LandingPage() {
                     Comenzar ahora <ArrowRight className="h-4 w-4" />
                   </Button>
                   <Button size="lg" variant="outline">
-                    Conocer más
+                    Ver Demos
                   </Button>
                 </div>
               </div>
@@ -82,45 +84,45 @@ export default function LandingPage() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
-                  Nuestros Servicios
+                  Nuestro Servicio
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-                  Soluciones a medida para cada necesidad
+                  Catálogos digitales a tu medida
                 </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl">
-                  Ofrecemos servicios especializados que impulsan el crecimiento y la eficiencia de tu empresa.
+                Ofrecemos una plataforma intuitiva para que puedas crear y gestionar tus propios catálogos digitales sin depender de nadie.
                 </p>
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
               {[
                 {
-                  title: "Desarrollo Web",
+                  title: "Fácil de usar",
                   description:
-                    "Creamos sitios web modernos, responsivos y optimizados para convertir visitantes en clientes.",
+                    "Interfaz intuitiva que no requiere conocimientos técnicos. Actualiza tu catálogo en minutos.",
                 },
                 {
-                  title: "Marketing Digital",
+                  title: "Personalizable",
                   description:
-                    "Estrategias personalizadas para aumentar tu visibilidad online y generar leads cualificados.",
+                    "Adapta el diseño a tu marca con opciones de personalización de colores, fuentes y estilos.",
                 },
                 {
-                  title: "Consultoría",
+                  title: "Multiplataforma",
                   description:
-                    "Asesoramiento experto para optimizar procesos y maximizar el rendimiento de tu negocio.",
+                    "Tus catálogos se verán perfectos en cualquier dispositivo: ordenadores, tablets y móviles.",
                 },
                 {
                   title: "Diseño UX/UI",
                   description:
-                    "Interfaces intuitivas y atractivas que mejoran la experiencia de usuario y aumentan la conversión.",
+                    "Creamos interfaces intuitivas y atractivas que enriquecen la experiencia de usuario.",
                 },
                 {
-                  title: "Analítica de Datos",
-                  description: "Transformamos datos en insights accionables para tomar decisiones informadas.",
+                  title: "Inmediato",
+                  description: "Modifica precios, productos o descripciones y los cambios se aplican al instante.",
                 },
                 {
-                  title: "Soporte Técnico",
-                  description: "Asistencia continua para garantizar el funcionamiento óptimo de tus sistemas.",
+                  title: "Soporte continuo",
+                  description: "Asistencia técnica disponible para resolver cualquier duda sobre la plataforma.",
                 },
               ].map((feature, index) => (
                 <div key={index} className="group relative overflow-hidden rounded-lg border p-6 hover:border-primary">
@@ -137,8 +139,86 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Precios Section */}
+        <section id="precios" className="w-full py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
+                  Planes y Precios
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Elige el plan que mejor se adapte a tus necesidades
+                </h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl">
+                  Ofrecemos diferentes opciones para empresas de todos los tamaños.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto flex justify-center max-w-5xl gap-6 py-12 md:grid-cols-3">
+              {[
+                {
+                  name: "Básico",
+                  price: "25$",
+                  period: "/mes",
+                  description: "Perfecto para pequeñas empresas que están comenzando",
+                  features: [
+                    "1 catálogo digital",
+                    "Hasta 100 productos",
+                    "Personalización básica",
+                  ],
+                  cta: "Comenzar ahora",
+                  popular: false,
+                },
+                {
+                  name: "Profesional",
+                  price: "80$",
+                  period: "/mes",
+                  description: "Ideal para empresas en crecimiento con múltiples líneas de productos",
+                  features: [
+                    "3 catálogos digitales",
+                    "Hasta 300 productos por catálogo",
+                    "Personalización avanzada",
+                    "Soporte prioritario",
+                  ],
+                  cta: "Comenzar ahora",
+                  popular: false,
+                }
+              ].map((plan, index) => (
+                <div
+                  key={index}
+                  className={`flex flex-col w-33/100 rounded-lg border ${plan.popular ? "border-primary shadow-lg scale-105" : ""} bg-background p-6`}
+                >
+                  {plan.popular && (
+                    <div className="inline-block rounded-full bg-primary px-3 py-1 text-xs text-primary-foreground mb-4 w-fit">
+                      Más popular
+                    </div>
+                  )}
+                  <div className="space-y-2">
+                    <h3 className="text-2xl font-bold">{plan.name}</h3>
+                    <div className="flex items-baseline">
+                      <span className="text-4xl font-bold">{plan.price}</span>
+                      <span className="text-muted-foreground ml-1">{plan.period}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">{plan.description}</p>
+                  </div>
+                  <ul className="my-6 space-y-2 flex-1">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center gap-2">
+                        <Check className="h-4 w-4 text-primary" />
+                        <span className="text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className={`w-full ${plan.popular ? "bg-primary" : ""}`}>{plan.cta}</Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* About Section */}
-        <section id="nosotros" className="w-full py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
+        <section id="nosotros" className="w-full py-12 md:py-24 lg:py-32 bg-background flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
               <Image
@@ -149,21 +229,21 @@ export default function LandingPage() {
                 className="mx-auto aspect-video overflow-hidden rounded-xl object-cover"
               />
               <div className="flex flex-col justify-center space-y-4">
-                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
+                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary w-fit">
                   Sobre Nosotros
                 </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Expertos comprometidos con tu éxito</h2>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Expertos en catálogos digitales</h2>
                 <p className="text-muted-foreground md:text-lg">
-                  Con más de 10 años de experiencia en el sector, nuestro equipo multidisciplinar trabaja
-                  incansablemente para ofrecer soluciones que marcan la diferencia. Nos apasiona lo que hacemos y nos
-                  comprometemos con cada proyecto como si fuera nuestro propio negocio.
+                  Somos un equipo de profesionales apasionados por simplificar la digitalización de catálogos. Nuestra
+                  misión es proporcionar herramientas que permitan a cualquier empresa, independientemente de su tamaño
+                  o sector, crear y gestionar catálogos digitales profesionales sin complicaciones.
                 </p>
                 <ul className="grid gap-2">
                   {[
-                    "Equipo de profesionales certificados",
-                    "Metodologías ágiles y eficientes",
-                    "Compromiso con la excelencia",
-                    "Enfoque personalizado para cada cliente",
+                    "Más de 5 años de experiencia en el sector",
+                    "Más de 500 clientes satisfechos",
+                    "Plataforma desarrollada con las últimas tecnologías",
+                    "Equipo dedicado a la mejora continua",
                   ].map((item, index) => (
                     <li key={index} className="flex items-center gap-2">
                       <Check className="h-5 w-5 text-primary" />
@@ -177,49 +257,59 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section id="testimonios" className="w-full py-12 md:py-24 lg:py-32 bg-background flex justify-center">
+        {/* Demos Section */}
+        <section id="demos" className="w-full py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Testimonios</div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Lo que dicen nuestros clientes</h2>
+                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Demos</div>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Explora nuestros catálogos de ejemplo
+                </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl">
-                  Descubre por qué nuestros clientes confían en nosotros para impulsar sus negocios.
+                  Descubre el potencial de nuestros catálogos digitales con estos ejemplos interactivos.
                 </p>
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  name: "María González",
-                  company: "Innovatech",
-                  testimonial:
-                    "Trabajar con este equipo ha sido una experiencia excepcional. Entendieron perfectamente nuestras necesidades y entregaron resultados que superaron nuestras expectativas.",
+                  title: "Catálogo de Moda",
+                  description: "Ejemplo de catálogo para tiendas de ropa y accesorios.",
+                  image: "/placeholder.svg?height=300&width=400",
                 },
                 {
-                  name: "Carlos Rodríguez",
-                  company: "Grupo Impulsa",
-                  testimonial:
-                    "Gracias a su estrategia de marketing digital, hemos aumentado nuestras ventas en un 40% en solo tres meses. Su profesionalidad y dedicación son admirables.",
+                  title: "Catálogo de Muebles",
+                  description: "Muestra de catálogo para tiendas de decoración y mobiliario.",
+                  image: "/placeholder.svg?height=300&width=400",
                 },
                 {
-                  name: "Laura Martínez",
-                  company: "Soluciones Globales",
-                  testimonial:
-                    "La consultoría que nos proporcionaron transformó completamente nuestros procesos internos. Ahora somos mucho más eficientes y nuestros clientes están más satisfechos.",
-                },
-              ].map((testimonial, index) => (
-                <div key={index} className="flex flex-col justify-between rounded-lg border p-6 shadow-sm">
-                  <div className="space-y-4">
-                    <p className="text-muted-foreground">"{testimonial.testimonial}"</p>
-                    <div className="flex items-center gap-2">
-                      <div className="rounded-full bg-muted h-10 w-10"></div>
-                      <div>
-                        <h4 className="font-medium">{testimonial.name}</h4>
-                        <p className="text-sm text-muted-foreground">{testimonial.company}</p>
-                      </div>
+                  title: "Catálogo Gastronómico",
+                  description: "Ejemplo de carta digital para restaurantes y cafeterías.",
+                  image: "/placeholder.svg?height=300&width=400",
+                }
+              ].map((demo, index) => (
+                <div
+                  key={index}
+                  className="group overflow-hidden rounded-lg border bg-background transition-all hover:shadow-lg"
+                >
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src={demo.image || "/placeholder.svg"}
+                      width={400}
+                      height={300}
+                      alt={demo.title}
+                      className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                      <Button variant="secondary" className="m-4">
+                        Ver demo
+                      </Button>
                     </div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-bold">{demo.title}</h3>
+                    <p className="text-sm text-muted-foreground">{demo.description}</p>
                   </div>
                 </div>
               ))}
@@ -230,27 +320,91 @@ export default function LandingPage() {
         {/* CTA Section */}
         <section id="contacto" className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground flex justify-center">
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">¿Listo para impulsar tu negocio?</h2>
-                <p className="max-w-[600px] md:text-xl">
-                  Contáctanos hoy mismo y descubre cómo podemos ayudarte a alcanzar tus objetivos.
-                </p>
+            <div className="grid gap-10 lg:grid-cols-2">
+              <div className="flex flex-col justify-center space-y-4">
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                    ¿Listo para digitalizar tu catálogo?
+                  </h2>
+                  <p className="max-w-[600px] md:text-xl">
+                    Contáctanos hoy mismo y te ayudaremos a crear el catálogo digital perfecto para tu negocio.
+                  </p>
+                </div>
+                <ul className="grid gap-2">
+                  {[
+                    "Respuesta en menos de 24 horas",
+                    "Asesoramiento personalizado",
+                    "Prueba gratuita de 14 días",
+                    "Sin compromiso de permanencia",
+                  ].map((item, index) => (
+                    <li key={index} className="flex items-center gap-2">
+                      <Check className="h-5 w-5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="w-full max-w-sm space-y-2">
+              <div className="rounded-lg bg-background p-6 shadow-lg">
+                <h3 className="text-xl font-bold text-foreground mb-4">Solicita información</h3>
                 <form className="grid gap-4">
-                  <input
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Tu nombre"
-                    type="text"
-                  />
-                  <input
-                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    placeholder="Tu email"
-                    type="email"
-                  />
-                  <Button type="submit" variant="secondary">
-                    Solicitar información
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <label htmlFor="nombre" className="text-sm font-medium text-foreground">
+                        Nombre
+                      </label>
+                      <input
+                        id="nombre"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                        placeholder="Tu nombre"
+                        type="text"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label htmlFor="empresa" className="text-sm font-medium text-foreground">
+                        Empresa
+                      </label>
+                      <input
+                        id="empresa"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                        placeholder="Nombre de tu empresa"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email" className="text-sm font-medium text-foreground">
+                      Email
+                    </label>
+                    <input
+                      id="email"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                      placeholder="tu@email.com"
+                      type="email"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="telefono" className="text-sm font-medium text-foreground">
+                      Teléfono
+                    </label>
+                    <input
+                      id="telefono"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                      placeholder="Tu teléfono"
+                      type="tel"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="mensaje" className="text-sm font-medium text-foreground">
+                      Mensaje
+                    </label>
+                    <textarea
+                      id="mensaje"
+                      className="flex min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                      placeholder="¿En qué podemos ayudarte?"
+                    ></textarea>
+                  </div>
+                  <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                    Enviar solicitud
                   </Button>
                 </form>
               </div>
@@ -263,20 +417,12 @@ export default function LandingPage() {
       <footer className="w-full flex justify-center flex-col border-t bg-background py-6 flex justify-center items-center">
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row px-4 md:px-6">
           <div className="flex items-center gap-2">
-            <Image src="/placeholder.svg?height=32&width=32" alt="Logo" width={32} height={32} className="rounded-md" />
-            <span className="text-lg font-bold">TuEmpresa</span>
+            <Image src="/logo-visual.png" alt="Logo" width={32} height={32} className="rounded-md" />
+            <span className="text-lg font-bold">Visualisto</span>
           </div>
           <p className="text-center text-sm text-muted-foreground md:text-left">
-            &copy; {new Date().getFullYear()} TuEmpresa. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} Visualisto. Todos los derechos reservados.
           </p>
-          <div className="flex gap-4">
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
-              Política de privacidad
-            </Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-foreground">
-              Términos de servicio
-            </Link>
-          </div>
         </div>
       </footer>
     </div>
