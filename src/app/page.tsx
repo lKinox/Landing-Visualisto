@@ -105,10 +105,14 @@ export default function LandingPage() {
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button size="lg" className="gap-1">
-                    Comenzar ahora <ArrowRight className="h-4 w-4" />
+                    <Link href="#contacto">
+                      Comenzar ahora <ArrowRight className="h-4 w-4" />
+                    </Link>
                   </Button>
                   <Button size="lg" variant="outline">
-                    Ver Demos
+                    <Link href="#demos">
+                      Ver Demos
+                    </Link>
                   </Button>
                 </div>
               </div>
@@ -217,7 +221,7 @@ export default function LandingPage() {
                 },
                 {
                   name: "Profesional",
-                  price: "80$",
+                  price: "70$",
                   period: "/mes",
                   description: "Ideal para empresas en crecimiento con múltiples líneas de productos",
                   features: [
