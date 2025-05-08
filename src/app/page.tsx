@@ -18,7 +18,7 @@ export default function LandingPage() {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
-    const whatsapp = '1234567890'; // Aquí coloca el número de WhatsApp con el código de país
+    const whatsapp = '584122532702'; // Aquí coloca el número de WhatsApp con el código de país
     const textMessage = `Nombre: ${nombre}\nEmpresa: ${empresa}\nEmail: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`;
     const url = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${textMessage}`;
 
@@ -73,7 +73,11 @@ export default function LandingPage() {
                   </SheetClose>
                   <div className="mt-4">
                     <SheetClose asChild>
-                      <Button className="w-full">Solicitar Demo</Button>
+                      <Button className="w-full">
+                        <Link href="#contacto">
+                          Solicitar Demo
+                        </Link>
+                      </Button>
                     </SheetClose>
                   </div>
                 </nav>
