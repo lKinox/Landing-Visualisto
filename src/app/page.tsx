@@ -84,7 +84,11 @@ export default function LandingPage() {
             <Link href="#contacto" className="text-sm font-medium hover:text-primary">
               Contacto
             </Link>
-            <Button>Solicitar Demo</Button>
+            <Button>
+              <Link href="#contacto">
+                Solicitar Demo
+              </Link>
+            </Button>
           </nav>
         </div>
       </header>
@@ -104,8 +108,8 @@ export default function LandingPage() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" className="gap-1">
-                    <Link href="#contacto">
+                  <Button size="lg">
+                    <Link href="#contacto" className="flex items-center gap-1">
                       Comenzar ahora <ArrowRight className="h-4 w-4" />
                     </Link>
                   </Button>
@@ -266,48 +270,8 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="nosotros" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-background flex justify-center">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-10 lg:grid-cols-2 lg:gap-12">
-              <Image
-                src="/placeholder.svg?height=400&width=600"
-                width={600}
-                height={400}
-                alt="Nuestro equipo"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover"
-              />
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary w-fit">
-                  Sobre Nosotros
-                </div>
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">Expertos en catálogos digitales</h2>
-                <p className="text-muted-foreground md:text-lg">
-                  Somos un equipo de profesionales apasionados por simplificar la digitalización de catálogos. Nuestra
-                  misión es proporcionar herramientas que permitan a cualquier empresa, independientemente de su tamaño
-                  o sector, crear y gestionar catálogos digitales profesionales sin complicaciones.
-                </p>
-                <ul className="grid gap-2">
-                  {[
-                    "Más de 5 años de experiencia en el sector",
-                    "Más de 500 clientes satisfechos",
-                    "Plataforma desarrollada con las últimas tecnologías",
-                    "Equipo dedicado a la mejora continua",
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <Check className="h-5 w-5 text-primary" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="w-fit">Conoce al equipo</Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Demos Section */}
-        <section id="demos" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
+        <section id="demos" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-background flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
