@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { Menu, ChevronRight, Check, ArrowRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
-import { FiAlignJustify } from "react-icons/fi";
 
 export default function LandingPage() {
   const [nombre, setNombre] = useState('');
