@@ -1,11 +1,30 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
-import { Menu, ChevronRight, Check, ArrowRight } from "lucide-react"
+import { useState } from 'react';
+import { Menu, ChevronRight, Check, ArrowRight, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
 import { FiAlignJustify } from "react-icons/fi";
 
 export default function LandingPage() {
+  const [nombre, setNombre] = useState('');
+  const [empresa, setEmpresa] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [mensaje, setMensaje] = useState('');
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const whatsapp = '1234567890'; // Aquí coloca el número de WhatsApp con el código de país
+    const textMessage = `Nombre: ${nombre}\nEmpresa: ${empresa}\nEmail: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`;
+    const url = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${textMessage}`;
+
+    window.open(url, '_blank');
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navbar */}
@@ -43,11 +62,6 @@ export default function LandingPage() {
                     </Link>
                   </SheetClose>
                   <SheetClose asChild>
-                    <Link href="#nosotros" className="flex items-center py-2 text-base font-medium hover:text-primary">
-                      Nosotros
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
                     <Link href="#demos" className="flex items-center py-2 text-base font-medium hover:text-primary">
                       Demos
                     </Link>
@@ -74,9 +88,6 @@ export default function LandingPage() {
             </Link>
             <Link href="#precios" className="text-sm font-medium hover:text-primary">
               Precios
-            </Link>
-            <Link href="#nosotros" className="text-sm font-medium hover:text-primary">
-              Nosotros
             </Link>
             <Link href="#demos" className="text-sm font-medium hover:text-primary">
               Demos
@@ -284,46 +295,40 @@ export default function LandingPage() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-2">
               {[
                 {
                   title: "Catálogo de Moda",
                   description: "Ejemplo de catálogo para tiendas de ropa y accesorios.",
                   image: "/placeholder.svg?height=300&width=400",
+                  url: "https://demo.visualisto.com/",
                 },
                 {
-                  title: "Catálogo de Muebles",
+                  title: "Catálogo de Decoración",
                   description: "Muestra de catálogo para tiendas de decoración y mobiliario.",
                   image: "/placeholder.svg?height=300&width=400",
-                },
-                {
-                  title: "Catálogo Gastronómico",
-                  description: "Ejemplo de carta digital para restaurantes y cafeterías.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  url: "https://demo2.visualisto.com/",
                 }
               ].map((demo, index) => (
                 <div
                   key={index}
                   className="group overflow-hidden rounded-lg border bg-background transition-all hover:shadow-lg"
                 >
-                  <div className="relative overflow-hidden">
-                    <Image
-                      src={demo.image || "/placeholder.svg"}
-                      width={400}
-                      height={300}
-                      alt={demo.title}
-                      className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
-                      <Button variant="secondary" className="m-4">
-                        Ver demo
-                      </Button>
+                  <Link href={demo.url} target="_blank">
+                    <div className="relative overflow-hidden">
+                      <Image
+                        src={demo.image || "/placeholder.svg"}
+                        width={400}
+                        height={300}
+                        alt={demo.title}
+                        className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
+                      />
                     </div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-bold">{demo.title}</h3>
-                    <p className="text-sm text-muted-foreground">{demo.description}</p>
-                  </div>
+                    <div className="p-4">
+                      <h3 className="font-bold">{demo.title}</h3>
+                      <p className="text-sm text-muted-foreground">{demo.description}</p>
+                    </div>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -359,7 +364,7 @@ export default function LandingPage() {
               </div>
               <div className="rounded-lg bg-background p-6 shadow-lg">
                 <h3 className="text-xl font-bold text-foreground mb-4">Solicita información</h3>
-                <form className="grid gap-4">
+                <form className="grid gap-4" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="nombre" className="text-sm font-medium text-foreground">
@@ -367,9 +372,11 @@ export default function LandingPage() {
                       </label>
                       <input
                         id="nombre"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-slate-800"
                         placeholder="Tu nombre"
                         type="text"
+                        value={nombre}
+                        onChange={(e) => setNombre(e.target.value)}
                       />
                     </div>
                     <div className="space-y-2">
@@ -378,9 +385,11 @@ export default function LandingPage() {
                       </label>
                       <input
                         id="empresa"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-slate-800"
                         placeholder="Nombre de tu empresa"
                         type="text"
+                        value={empresa}
+                        onChange={(e) => setEmpresa(e.target.value)}
                       />
                     </div>
                   </div>
@@ -390,9 +399,11 @@ export default function LandingPage() {
                     </label>
                     <input
                       id="email"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-slate-800"
                       placeholder="tu@email.com"
                       type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
@@ -401,9 +412,11 @@ export default function LandingPage() {
                     </label>
                     <input
                       id="telefono"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-slate-800"
                       placeholder="Tu teléfono"
                       type="tel"
+                      value={telefono}
+                      onChange={(e) => setTelefono(e.target.value)}
                     />
                   </div>
                   <div className="space-y-2">
@@ -412,12 +425,14 @@ export default function LandingPage() {
                     </label>
                     <textarea
                       id="mensaje"
-                      className="flex min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-foreground"
+                      className="flex min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-slate-800"
                       placeholder="¿En qué podemos ayudarte?"
+                      value={mensaje}
+                      onChange={(e) => setMensaje(e.target.value)}
                     ></textarea>
                   </div>
                   <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-primary/90">
-                    Enviar solicitud
+                    Enviar Mensaje <MessageCircle />
                   </Button>
                 </form>
               </div>
