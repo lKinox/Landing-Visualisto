@@ -27,8 +27,10 @@ export default function LandingPage() {
     textMessage += `\nEmail: ${email}`;
     textMessage += `\nTeléfono: ${telefono}`;
     textMessage += `\nMensaje: ${mensaje}`;
-    
-    const url = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${textMessage}`;
+
+    const message = encodeURIComponent(textMessage);
+
+    const url = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${message}`;
 
     window.open(url, '_blank');
   };
