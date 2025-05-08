@@ -19,7 +19,15 @@ export default function LandingPage() {
     event.preventDefault();
 
     const whatsapp = '584122532702'; // Aquí coloca el número de WhatsApp con el código de país
-    const textMessage = `Nombre: ${nombre}\nEmpresa: ${empresa}\nEmail: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`;
+
+    let textMessage = "¡Hola! Estoy interesado en saber más\n";
+
+    textMessage += `\nNombre: ${nombre}`;
+    textMessage += `\nEmpresa: ${empresa}`;
+    textMessage += `\nEmail: ${email}`;
+    textMessage += `\nTeléfono: ${telefono}`;
+    textMessage += `\nMensaje: ${mensaje}`;
+    
     const url = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${textMessage}`;
 
     window.open(url, '_blank');
