@@ -2,10 +2,11 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from 'react';
-import { Menu, ChevronRight, Check, ArrowRight, MessageCircle } from "lucide-react"
+import { useEffect, useState } from 'react';
+import { Menu, ChevronRight, Check, ArrowRight, MessageCircle, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
+import { Badge } from "@/components/ui/badge"
 
 export default function LandingPage() {
   const [nombre, setNombre] = useState('');
@@ -33,6 +34,35 @@ export default function LandingPage() {
 
     window.open(url, '_blank');
   };
+
+  const [showCard1, setShowCard1] = useState(false)
+  const [showCard2, setShowCard2] = useState(false)
+  const [showCard3, setShowCard3] = useState(false)
+
+  // Efecto para animar las tarjetas secuencialmente al cargar la página
+  useEffect(() => {
+    // Primera tarjeta
+    const timer1 = setTimeout(() => {
+      setShowCard1(true)
+    }, 300) // 0.3s después de cargar
+
+    // Segunda tarjeta
+    const timer2 = setTimeout(() => {
+      setShowCard2(true)
+    }, 600) // 0.6s después de cargar (0.3s después de la primera)
+
+    // Tercera tarjeta
+    const timer3 = setTimeout(() => {
+      setShowCard3(true)
+    }, 900) // 0.9s después de cargar (0.3s después de la segunda)
+
+    // Limpieza de los timers al desmontar el componente
+    return () => {
+      clearTimeout(timer1)
+      clearTimeout(timer2)
+      clearTimeout(timer3)
+    }
+  }, []) // Se ejecuta solo al montar el componente
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -121,7 +151,7 @@ export default function LandingPage() {
         {/* Hero Section */}
         <section className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-background to-muted flex justify-center">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
+            <div className="grid gap-6 grid-cols-1 xl:grid-cols-2">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
@@ -144,13 +174,112 @@ export default function LandingPage() {
                   </Button>
                 </div>
               </div>
-              <Image
-                src="/placeholder.svg?height=550&width=550"
-                width={550}
-                height={550}
-                alt="Hero"
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last lg:aspect-square"
-              />
+              <div className="relative h-[500px] md:h-[550px] mt-10 lg:mt-0">
+                {/* Primera tarjeta - Izquierda */}
+                <div
+                  className={`absolute z-10 w-[280px] md:w-[300px] transform -rotate-6 left-0 top-10 md:left-0 md:top-20 hover:-translate-y-3 transition-all duration-1000 shadow-md hover:shadow-xl rounded-lg overflow-hidden bg-white opacity-0 ${
+                    showCard1 ? "opacity-100" : ""
+                  }`}
+                >
+                  <div className="relative h-[200px]">
+                    <Image
+                      src="/franela-azul.jpg?height=200&width=300"
+                      alt="Franela Azul"
+                      fill
+                      className="object-cover transition-all hover:scale-105"
+                    />
+                    <Badge className="absolute right-2 top-2">Ropa</Badge>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium">Franela Sencilla Azul</h3>
+                    <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+                      Sumérgete en la serenidad del azul con esta franela esencial para tu día a día.
+                    </p>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div>
+                        <span className="font-semibold">$15.00</span>
+                        <span className="font-semibold text-sm line-through text-red-600 ml-1">$20.00</span>
+                      </div>
+                      <Link
+                        href="#"
+                        className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-800"
+                      >
+                        Ver Detalles
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Segunda tarjeta - Centro */}
+                <div
+                  className={`absolute z-20 w-[280px] md:w-[300px] left-1/2 -translate-x-1/2 top-0 hover:-translate-y-3 transition-all duration-1000 shadow-md hover:shadow-xl rounded-lg overflow-hidden bg-white opacity-0 ${
+                    showCard2 ? "opacity-100" : ""
+                  }`}
+                >
+                  <div className="relative h-[200px]">
+                    <Image
+                      src="/zapatos-blancos.jpg?height=200&width=300"
+                      alt="Zapatos Blancos"
+                      fill
+                      className="object-cover transition-all hover:scale-105"
+                    />
+                    <Badge className="absolute right-2 top-2">Calzado</Badge>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium">Zapatos Blancos</h3>
+                    <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+                      Camina con elegancia y versatilidad con estos impecables zapatos blancos.
+                    </p>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div>
+                        <span className="font-semibold">$40.00</span>
+                        <span className="font-semibold text-sm line-through text-red-600 ml-1">$45.00</span>
+                      </div>
+                      <Link
+                        href="#"
+                        className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-800"
+                      >
+                        Ver Detalles
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Tercera tarjeta - Derecha */}
+                <div
+                  className={`absolute z-10 w-[280px] md:w-[300px] transform rotate-6 right-0 top-10 md:right-0 md:top-20 hover:-translate-y-3 transition-all duration-1000 shadow-md hover:shadow-xl rounded-lg overflow-hidden bg-white opacity-0 ${
+                    showCard3 ? "opacity-100" : ""
+                  }`}
+                >
+                  <div className="relative h-[200px]">
+                    <Image
+                      src="/reloj-moderno.webp?height=200&width=300"
+                      alt="Reloj Moderno"
+                      fill
+                      className="object-cover transition-all hover:scale-105"
+                    />
+                    <Badge className="absolute right-2 top-2">Accesorios</Badge>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-medium">Reloj Moderno</h3>
+                    <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
+                      Este reloj moderno fusiona un diseño elegante y minimalista con una funcionalidad precisa.
+                    </p>
+                    <div className="mt-3 flex items-center justify-between">
+                      <div>
+                        <span className="font-semibold">$65.00</span>
+                        <span className="font-semibold text-sm line-through text-red-600 ml-1">$70.00</span>
+                      </div>
+                      <Link
+                        href="#"
+                        className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-800"
+                      >
+                        Ver Detalles
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -313,13 +442,13 @@ export default function LandingPage() {
                 {
                   title: "Catálogo de Moda",
                   description: "Ejemplo de catálogo para tiendas de ropa y accesorios.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/demo11.png?height=300&width=400",
                   url: "https://demo.visualisto.com/",
                 },
                 {
                   title: "Catálogo de Decoración",
                   description: "Muestra de catálogo para tiendas de decoración y mobiliario.",
-                  image: "/placeholder.svg?height=300&width=400",
+                  image: "/demo22.png?height=300&width=400",
                   url: "https://demo2.visualisto.com/",
                 }
               ].map((demo, index) => (
