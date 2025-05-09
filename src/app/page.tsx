@@ -212,7 +212,7 @@ export default function LandingPage() {
 
                 {/* Segunda tarjeta - Centro */}
                 <div
-                  className={`absolute z-20 w-[280px] md:w-[300px] left-1/2 -translate-x-1/2 top-0 hover:-translate-y-3 transition-all duration-1000 shadow-md hover:shadow-xl rounded-lg overflow-hidden bg-white opacity-0 ${
+                  className={`absolute z-20 w-[280px] md:w-[300px] left-1/2 -translate-x-1/2 top-8 hover:-translate-y-3 transition-all duration-1000 shadow-md hover:shadow-xl rounded-lg overflow-hidden bg-white opacity-0 ${
                     showCard2 ? "opacity-100" : ""
                   }`}
                 >
