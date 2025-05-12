@@ -146,6 +146,7 @@
 	bottom: 30px;
 	right: 30px;
 	animation-play-state: paused;
+  z-index: 999999;
 }
 
 .btn-whatsapp-pulse-border::before {
