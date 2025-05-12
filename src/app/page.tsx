@@ -35,6 +35,16 @@ export default function LandingPage() {
     window.open(url, '_blank');
   };
 
+  const sendWhatsapp = () => {
+
+    const whatsapp = '584122532702'; 
+    const message = '¡Hola! Quiero más información sobre Visualisto y sus catálogos.'; 
+
+    const url = `https://api.whatsapp.com/send?phone=${whatsapp}&text=${message}`;
+
+    window.open(url, '_blank');
+  }
+
   const [showCard1, setShowCard1] = useState(false)
   const [showCard2, setShowCard2] = useState(false)
   const [showCard3, setShowCard3] = useState(false)
@@ -416,7 +426,11 @@ export default function LandingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Button className={`w-full ${plan.popular ? "bg-primary" : ""}`}>{plan.cta}</Button>
+                  <Button className={`w-full ${plan.popular ? "bg-primary" : ""}`}>
+                    <Link href="#contacto">
+                      {plan.cta}
+                    </Link>
+                  </Button>
                 </div>
               ))}
             </div>
@@ -595,6 +609,12 @@ export default function LandingPage() {
           </p>
         </div>
       </footer>
+
+      {/* Whatsapp button */}
+
+      <Button onClick={sendWhatsapp} className="btn-whatsapp-pulse btn-whatsapp-pulse-border cursor-pointer">
+        <i className="fab fa-whatsapp" suppressHydrationWarning></i>
+      </Button>
     </div>
   )
 }
