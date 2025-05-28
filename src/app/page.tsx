@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from 'react';
-import { Menu, ChevronRight, Check, ArrowRight, MessageCircle, ShoppingCart } from "lucide-react"
+import { Menu, ChevronRight, Check, ArrowRight, MessageCircle, ChevronLeft, Play, Pause} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
 import { Badge } from "@/components/ui/badge"
@@ -74,6 +74,64 @@ export default function LandingPage() {
     }
   }, []) // Se ejecuta solo al montar el componente
 
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  // Estados para el slider de la aplicación
+  const [activeAppIndex, setActiveAppIndex] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
+  const appScreenshots = [
+    {
+      id: 1,
+      title: "Dashboard intuitivo",
+      description:
+        "Crea y edita los productos de tu catálogo, agrega imagenes, establece precios, asigna categorías y gestiona el inventario.",
+      image: "/dashboard_img/Products.png?height=600&width=800",
+      features: ["Creador de productos", "Edita productos", "Asignación de categorías"],
+    },
+    {
+      id: 2,
+      title: "Agrega y edita tus categorías",
+      description:
+        "Crea y edita categorías para organizar tus productos. Asigna categorías a tus productos para una mejor navegación.",
+      image: "/dashboard_img/Category.png?height=600&width=800",
+      features: ["Crea y edita categorías"],
+    },
+    {
+      id: 3,
+      title: "Configura la información de tu empresa",
+      description:
+        "Añade los datos de tu empresa, como nombre, logo y contacto. Personaliza la apariencia de tu catálogo.",
+      image: "/dashboard_img/Company.png?height=600&width=800",
+      features: ["Edita la información de tu empresa", "Agrega tus redes sociales", "Personaliza el logo"],
+    },
+  ]
+
+  // Efecto para el autoplay del slider de la aplicación
+  useEffect(() => {
+    if (!isAutoPlaying) return
+
+    const interval = setInterval(() => {
+      setActiveAppIndex((prevIndex) => (prevIndex === appScreenshots.length - 1 ? 0 : prevIndex + 1))
+    }, 6000) // Cambia cada 4 segundos
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying])
+
+
+  // Funciones para el slider de la aplicación
+  const nextAppSlide = () => {
+    setActiveAppIndex((prevIndex) => (prevIndex === appScreenshots.length - 1 ? 0 : prevIndex + 1))
+  }
+
+  const prevAppSlide = () => {
+    setActiveAppIndex((prevIndex) => (prevIndex === 0 ? appScreenshots.length - 1 : prevIndex - 1))
+  }
+
+  const toggleAutoPlay = () => {
+    setIsAutoPlaying(!isAutoPlaying)
+  }
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navbar */}
@@ -103,6 +161,11 @@ export default function LandingPage() {
                   <SheetClose asChild>
                     <Link href="#servicio" className="flex items-center py-2 text-base font-medium hover:text-primary">
                       Servicio
+                    </Link>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Link href="#dashboard" className="flex items-center py-2 text-base font-medium hover:text-primary">
+                      ¿Cómo funciona?
                     </Link>
                   </SheetClose>
                   <SheetClose asChild>
@@ -138,6 +201,9 @@ export default function LandingPage() {
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#servicio" className="text-sm font-medium hover:text-primary">
               Servicio
+            </Link>
+            <Link href="#dashboard" className="text-sm font-medium hover:text-primary">
+              ¿Cómo	funciona?
             </Link>
             <Link href="#precios" className="text-sm font-medium hover:text-primary">
               Precios
@@ -210,12 +276,11 @@ export default function LandingPage() {
                         <span className="font-semibold">$15.00</span>
                         <span className="font-semibold text-sm line-through text-red-600 ml-1">$20.00</span>
                       </div>
-                      <Link
-                        href="#"
+                      <Button
                         className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-800"
                       >
                         Ver Detalles
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -245,12 +310,11 @@ export default function LandingPage() {
                         <span className="font-semibold">$40.00</span>
                         <span className="font-semibold text-sm line-through text-red-600 ml-1">$45.00</span>
                       </div>
-                      <Link
-                        href="#"
+                      <Button
                         className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-800"
                       >
                         Ver Detalles
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -280,12 +344,11 @@ export default function LandingPage() {
                         <span className="font-semibold">$65.00</span>
                         <span className="font-semibold text-sm line-through text-red-600 ml-1">$70.00</span>
                       </div>
-                      <Link
-                        href="#"
+                      <Button
                         className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white hover:bg-slate-800"
                       >
                         Ver Detalles
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -355,8 +418,134 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Creator Section */}
+        <section id="dashboard" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+              <div className="space-y-2">
+                <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">
+                  Cómo Funciona
+                </div>
+                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
+                  Descubre la potencia de nuestra plataforma
+                </h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl">
+                  Explora cada funcionalidad de nuestra aplicación y ve cómo puede transformar tu negocio.
+                </p>
+              </div>
+            </div>
+
+            {/* Slider de la aplicación */}
+            <div className="relative max-w-6xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                {/* Contenido de texto */}
+                <div className="space-y-6 order-2 lg:order-1">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold">{appScreenshots[activeAppIndex].title}</h3>
+                    <p className="text-muted-foreground text-lg leading-relaxed">
+                      {appScreenshots[activeAppIndex].description}
+                    </p>
+                  </div>
+
+                  {/* Lista de características */}
+                  <ul className="space-y-3">
+                    {appScreenshots[activeAppIndex].features.map((feature, index) => (
+                      <li key={index} className="flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-primary"></div>
+                        <span className="text-sm font-medium">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Controles del slider */}
+                  <div className="flex items-center gap-4 pt-4">
+                    <div className="flex gap-2">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full"
+                        onClick={prevAppSlide}
+                        aria-label="Pantalla anterior"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full"
+                        onClick={nextAppSlide}
+                        aria-label="Siguiente pantalla"
+                      >
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="rounded-full"
+                        onClick={toggleAutoPlay}
+                        aria-label={isAutoPlaying ? "Pausar autoplay" : "Iniciar autoplay"}
+                      >
+                        {isAutoPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                      </Button>
+                    </div>
+
+                    {/* Indicadores */}
+                    <div className="flex gap-2">
+                      {appScreenshots.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            index === activeAppIndex ? "bg-primary w-6" : "bg-gray-300"
+                          }`}
+                          onClick={() => setActiveAppIndex(index)}
+                          aria-label={`Ir a la pantalla ${index + 1}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Imagen de la aplicación */}
+                <div className="relative order-1 lg:order-2 hover:scale-[1.02] transition-transform duration-500">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-900 to-gray-700 p-4">
+                    {/* Barra superior del navegador/app */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="flex gap-1.5">
+                        <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                      </div>
+                      <div className="flex-1 bg-gray-600 rounded-md h-6 flex items-center px-3">
+                        <div className="w-2 h-2 rounded-full bg-gray-400 mr-2"></div>
+                        <div className="text-xs text-gray-300">tuapp.visualisto.com</div>
+                      </div>
+                    </div>
+
+                    {/* Imagen de la aplicación con transición */}
+                    <div className="relative aspect-video rounded-lg overflow-hidden">
+                      <Image
+                        src={appScreenshots[activeAppIndex].image || "/placeholder.svg"}
+                        alt={appScreenshots[activeAppIndex].title}
+                        fill
+                        className="object-cover transition-all duration-500"
+                      />
+
+                      {/* Overlay con efecto de carga */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                    </div>
+                  </div>
+
+                  {/* Elementos decorativos */}
+                  <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
+                  <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Precios Section */}
-        <section id="precios" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
+        <section id="precios" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-background flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -438,7 +627,7 @@ export default function LandingPage() {
         </section>
 
         {/* Demos Section */}
-        <section id="demos" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-background flex justify-center">
+        <section id="demos" className="w-full pr-5 pl-5 py-12 md:py-24 lg:py-32 bg-muted flex justify-center">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
