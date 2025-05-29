@@ -697,7 +697,6 @@ export default function LandingPage() {
                   {[
                     "Respuesta en menos de 24 horas",
                     "Asesoramiento personalizado",
-                    "Prueba gratuita de 14 días",
                     "Sin compromiso de permanencia",
                   ].map((item, index) => (
                     <li key={index} className="flex items-center gap-2">
